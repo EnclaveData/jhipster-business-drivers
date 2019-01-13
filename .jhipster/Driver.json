@@ -1,0 +1,42 @@
+{
+    "name": "Driver",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "firstRating",
+            "fieldType": "Rating",
+            "fieldValues": "Low,Medium,High"
+        },
+        {
+            "fieldName": "secondRating",
+            "fieldType": "Rating",
+            "fieldValues": "Low,Medium,High"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "attribute",
+            "otherEntityName": "attribute",
+            "otherEntityRelationshipName": "driver"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "control",
+            "otherEntityName": "control",
+            "otherEntityRelationshipName": "driver"
+        }
+    ],
+    "changelogDate": "20190113155232",
+    "entityTableName": "driver",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
