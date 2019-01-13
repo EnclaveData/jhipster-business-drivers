@@ -1,0 +1,35 @@
+entity Driver {
+	Name String,
+    FirstRating Rating,
+    SecondRating Rating
+}
+
+entity Attribute {
+	Name String
+}
+
+entity Control {
+    Name String
+}
+
+enum Rating {
+    Low, Medium, High
+}
+
+relationship OneToMany {
+	Driver{attribute} to Attribute,
+	Driver{control} to Control
+}
+
+
+// Set pagination options
+paginate Driver, Attribute, Control with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+// service all with serviceImpl except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
