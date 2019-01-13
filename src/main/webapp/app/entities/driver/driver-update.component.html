@@ -31,6 +31,20 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" for="field_attribute">Attribute</label>
+                    <select class="form-control" id="field_attribute" name="attribute" [(ngModel)]="driver.attribute" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="attributeOption.id === driver.attribute?.id ? driver.attribute : attributeOption" *ngFor="let attributeOption of attributes; trackBy: trackAttributeById">{{attributeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_control">Control</label>
+                    <select class="form-control" id="field_control" name="control" [(ngModel)]="driver.control" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="controlOption.id === driver.control?.id ? driver.control : controlOption" *ngFor="let controlOption of controls; trackBy: trackControlById">{{controlOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

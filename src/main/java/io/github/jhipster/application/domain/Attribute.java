@@ -1,12 +1,14 @@
 package io.github.jhipster.application.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -26,10 +28,9 @@ public class Attribute implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JsonIgnoreProperties("attributes")
-    private Driver driver;
-
+    @OneToMany(mappedBy = "attribute")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Driver> drivers = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -52,17 +53,29 @@ public class Attribute implements Serializable {
         this.name = name;
     }
 
-    public Driver getDriver() {
-        return driver;
+    public Set<Driver> getDrivers() {
+        return drivers;
     }
 
-    public Attribute driver(Driver driver) {
-        this.driver = driver;
+    public Attribute drivers(Set<Driver> drivers) {
+        this.drivers = drivers;
         return this;
     }
 
-    public void setDriver(Driver driver) {
-        this.driver = driver;
+    public Attribute addDriver(Driver driver) {
+        this.drivers.add(driver);
+        driver.setAttribute(this);
+        return this;
+    }
+
+    public Attribute removeDriver(Driver driver) {
+        this.drivers.remove(driver);
+        driver.setAttribute(null);
+        return this;
+    }
+
+    public void setDrivers(Set<Driver> drivers) {
+        this.drivers = drivers;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

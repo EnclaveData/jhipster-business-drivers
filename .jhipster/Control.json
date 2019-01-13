@@ -8,10 +8,10 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-many",
             "relationshipName": "driver",
             "otherEntityName": "driver",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
+            "otherEntityRelationshipName": "control"
         }
     ],
     "changelogDate": "20190113155234",

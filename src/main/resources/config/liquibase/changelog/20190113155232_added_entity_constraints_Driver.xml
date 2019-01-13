@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Driver.
+    -->
+    <changeSet id="20190113155232-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="attribute_id"
+                                 baseTableName="driver"
+                                 constraintName="fk_driver_attribute_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="attribute"/>
+
+        <addForeignKeyConstraint baseColumnNames="control_id"
+                                 baseTableName="driver"
+                                 constraintName="fk_driver_control_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="control"/>
+
+    </changeSet>
+</databaseChangeLog>

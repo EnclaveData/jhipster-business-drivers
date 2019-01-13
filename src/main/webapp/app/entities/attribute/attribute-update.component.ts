@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { JhiAlertService } from 'ng-jhipster';
 
 import { IAttribute } from 'app/shared/model/attribute.model';
 import { AttributeService } from './attribute.service';
-import { IDriver } from 'app/shared/model/driver.model';
-import { DriverService } from 'app/entities/driver';
 
 @Component({
     selector: 'jhi-attribute-update',
@@ -17,26 +14,13 @@ export class AttributeUpdateComponent implements OnInit {
     attribute: IAttribute;
     isSaving: boolean;
 
-    drivers: IDriver[];
-
-    constructor(
-        protected jhiAlertService: JhiAlertService,
-        protected attributeService: AttributeService,
-        protected driverService: DriverService,
-        protected activatedRoute: ActivatedRoute
-    ) {}
+    constructor(protected attributeService: AttributeService, protected activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ attribute }) => {
             this.attribute = attribute;
         });
-        this.driverService.query().subscribe(
-            (res: HttpResponse<IDriver[]>) => {
-                this.drivers = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
     }
 
     previousState() {
@@ -63,13 +47,5 @@ export class AttributeUpdateComponent implements OnInit {
 
     protected onSaveError() {
         this.isSaving = false;
-    }
-
-    protected onError(errorMessage: string) {
-        this.jhiAlertService.error(errorMessage, null, null);
-    }
-
-    trackDriverById(index: number, item: IDriver) {
-        return item.id;
     }
 }

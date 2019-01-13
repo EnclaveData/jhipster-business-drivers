@@ -18,6 +18,8 @@
             <th jhiSortBy="name"><span>Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="firstRating"><span>First Rating</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="secondRating"><span>Second Rating</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="attribute.id"><span>Attribute</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="control.id"><span>Control</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -27,6 +29,16 @@
                 <td>{{driver.name}}</td>
                 <td>{{driver.firstRating}}</td>
                 <td>{{driver.secondRating}}</td>
+                <td>
+                    <div *ngIf="driver.attribute">
+                        <a [routerLink]="['../attribute', driver.attribute?.id, 'view' ]" >{{driver.attribute?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="driver.control">
+                        <a [routerLink]="['../control', driver.control?.id, 'view' ]" >{{driver.control?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
