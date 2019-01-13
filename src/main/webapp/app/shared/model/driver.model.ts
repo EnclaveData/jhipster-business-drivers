@@ -12,8 +12,8 @@ export interface IDriver {
     name?: string;
     firstRating?: Rating;
     secondRating?: Rating;
-    attributes?: IAttribute[];
-    controls?: IControl[];
+    attribute?: IAttribute;
+    control?: IControl;
 }
 
 export class Driver implements IDriver {
@@ -22,7 +22,7 @@ export class Driver implements IDriver {
         public name?: string,
         public firstRating?: Rating,
         public secondRating?: Rating,
-        public attributes?: IAttribute[],
-        public controls?: IControl[]
+        public attribute?: IAttribute,
+        public control?: IControl
     ) {}
 }

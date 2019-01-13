@@ -43,6 +43,8 @@ public class CacheConfiguration {
             cm.createCache(io.github.jhipster.application.domain.Driver.class.getName() + ".controls", jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.Attribute.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.Control.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Attribute.class.getName() + ".drivers", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Control.class.getName() + ".drivers", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,14 +1,12 @@
 package io.github.jhipster.application.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 import io.github.jhipster.application.domain.enumeration.Rating;
@@ -38,12 +36,14 @@ public class Driver implements Serializable {
     @Column(name = "second_rating")
     private Rating secondRating;
 
-    @OneToMany(mappedBy = "driver")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Attribute> attributes = new HashSet<>();
-    @OneToMany(mappedBy = "driver")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Control> controls = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties("drivers")
+    private Attribute attribute;
+
+    @ManyToOne
+    @JsonIgnoreProperties("drivers")
+    private Control control;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -92,54 +92,30 @@ public class Driver implements Serializable {
         this.secondRating = secondRating;
     }
 
-    public Set<Attribute> getAttributes() {
-        return attributes;
+    public Attribute getAttribute() {
+        return attribute;
     }
 
-    public Driver attributes(Set<Attribute> attributes) {
-        this.attributes = attributes;
+    public Driver attribute(Attribute attribute) {
+        this.attribute = attribute;
         return this;
     }
 
-    public Driver addAttribute(Attribute attribute) {
-        this.attributes.add(attribute);
-        attribute.setDriver(this);
+    public void setAttribute(Attribute attribute) {
+        this.attribute = attribute;
+    }
+
+    public Control getControl() {
+        return control;
+    }
+
+    public Driver control(Control control) {
+        this.control = control;
         return this;
     }
 
-    public Driver removeAttribute(Attribute attribute) {
-        this.attributes.remove(attribute);
-        attribute.setDriver(null);
-        return this;
-    }
-
-    public void setAttributes(Set<Attribute> attributes) {
-        this.attributes = attributes;
-    }
-
-    public Set<Control> getControls() {
-        return controls;
-    }
-
-    public Driver controls(Set<Control> controls) {
-        this.controls = controls;
-        return this;
-    }
-
-    public Driver addControl(Control control) {
-        this.controls.add(control);
-        control.setDriver(this);
-        return this;
-    }
-
-    public Driver removeControl(Control control) {
-        this.controls.remove(control);
-        control.setDriver(null);
-        return this;
-    }
-
-    public void setControls(Set<Control> controls) {
-        this.controls = controls;
+    public void setControl(Control control) {
+        this.control = control;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

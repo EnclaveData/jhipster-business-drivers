@@ -15,13 +15,6 @@
                         [(ngModel)]="control.name" />
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" for="field_driver">Driver</label>
-                    <select class="form-control" id="field_driver" name="driver" [(ngModel)]="control.driver" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="driverOption.id === control.driver?.id ? control.driver : driverOption" *ngFor="let driverOption of drivers; trackBy: trackDriverById">{{driverOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

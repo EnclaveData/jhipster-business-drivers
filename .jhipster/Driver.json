@@ -18,16 +18,16 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
             "relationshipName": "attribute",
             "otherEntityName": "attribute",
-            "otherEntityRelationshipName": "driver"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         },
         {
-            "relationshipType": "one-to-many",
             "relationshipName": "control",
             "otherEntityName": "control",
-            "otherEntityRelationshipName": "driver"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20190113155232",
