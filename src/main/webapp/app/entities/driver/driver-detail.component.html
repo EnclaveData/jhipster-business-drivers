@@ -17,6 +17,18 @@
                 <dd>
                     <span>{{driver.secondRating}}</span>
                 </dd>
+                <dt><span>Attribute</span></dt>
+                <dd>
+                    <div *ngIf="driver.attribute">
+                        <a [routerLink]="['/attribute', driver.attribute?.id, 'view']">{{driver.attribute?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Control</span></dt>
+                <dd>
+                    <div *ngIf="driver.control">
+                        <a [routerLink]="['/control', driver.control?.id, 'view']">{{driver.control?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

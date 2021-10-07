@@ -9,12 +9,6 @@
                 <dd>
                     <span>{{attribute.name}}</span>
                 </dd>
-                <dt><span>Driver</span></dt>
-                <dd>
-                    <div *ngIf="attribute.driver">
-                        <a [routerLink]="['/driver', attribute.driver?.id, 'view']">{{attribute.driver?.id}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

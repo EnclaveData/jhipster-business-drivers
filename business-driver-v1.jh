@@ -17,8 +17,8 @@ enum Rating {
 }
 
 relationship OneToMany {
-	Driver{attribute} to Attribute,
-	Driver{control} to Control
+	Attribute{driver} to Driver,
+	Control{driver} to Driver
 }
 
 

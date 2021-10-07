@@ -9,12 +9,6 @@
                 <dd>
                     <span>{{control.name}}</span>
                 </dd>
-                <dt><span>Driver</span></dt>
-                <dd>
-                    <div *ngIf="control.driver">
-                        <a [routerLink]="['/driver', control.driver?.id, 'view']">{{control.driver?.id}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"
